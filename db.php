@@ -1,4 +1,5 @@
 <?php
+// Add credentials for the DB
 $dsn = "mysql:host=localhost;dbname=BookingSystem;charset=utf8";
 $user = "root";
 $password = "password";
@@ -8,5 +9,5 @@ try {
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    exit("Database connection failed: " . $e->getMessage());
 }

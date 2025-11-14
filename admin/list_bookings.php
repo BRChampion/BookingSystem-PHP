@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 require_once __DIR__ . '/../db.php';
 
@@ -22,10 +19,15 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <h1>All Bookings</h1>
 <table border="1">
     <tr>
-        <th>Bid</th><th>Date</th><th>Status</th><th>Instructor</th><th>Room</th>
+        <th>Booking ID</th>
+        <th>Requested Date</th>
+        <th>Booking Status</th>
+        <th>Instructor Name</th>
+        <th>Room Number</th>
     </tr>
     <?php foreach ($bookings as $b): ?>
         <tr>
+            <!-- htmlspecialchars protects against XSS  -->
             <td><?= htmlspecialchars($b['bid']) ?></td>
             <td><?= htmlspecialchars($b['requestedDate']) ?></td>
             <td><?= htmlspecialchars($b['status']) ?></td>
@@ -34,5 +36,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tr>
     <?php endforeach; ?>
 </table>
+
+<a href="home.php">Back to admin menu></a>
 </body>
 </html>
